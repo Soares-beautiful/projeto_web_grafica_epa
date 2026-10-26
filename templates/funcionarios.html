@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Funcionários · Gráfica EPA{% endblock %}
+{% block content %}
+<div class="page-heading"><div><h1>Funcionários</h1><p>Lista de usuários cadastrados na Gráfica EPA.</p></div><a href="{{ url_for('cadastro') }}" class="btn btn-primary"><i class="bi bi-person-plus me-2"></i>Novo cadastro</a></div>
+<div class="panel"><h2 class="panel-title mb-3">Funcionários cadastrados</h2><div class="table-wrap"><table class="table"><thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>CPF</th><th>Data de cadastro</th></tr></thead><tbody>
+{% for funcionario in funcionarios %}<tr><td>#{{ funcionario.get('id_funcinario') }}</td><td class="fw-semibold">{{ funcionario.get('nome') }}</td><td>{{ funcionario.get('email') }}</td><td>{{ funcionario.get('cpf') }}</td><td>{{ funcionario.get('data_cadastro') or '—' }}</td></tr>{% else %}<tr><td colspan="5" class="empty-state"><i class="bi bi-person-vcard"></i>Nenhum funcionário disponível ou não foi possível carregar a lista.</td></tr>{% endfor %}
+</tbody></table></div></div>
+{% endblock %}

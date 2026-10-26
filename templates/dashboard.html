@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard · Gráfica EPA{% endblock %}
+{% block content %}
+<div class="page-heading"><div><h1>Dashboard</h1><p>Resumo dos indicadores de produção da Gráfica EPA.</p></div><span class="badge-soft"><i class="bi bi-activity me-1"></i>Dados da API</span></div>
+<div class="stat-grid">
+    <section class="stat-card"><div class="stat-top"><span>Tempo total de rodagem</span><span class="stat-icon"><i class="bi bi-stopwatch"></i></span></div><div class="stat-value">{{ indicadores.get('tempo_total_rodagem', '—') }}</div><div class="stat-note">Somatório dos registros de produção</div></section>
+    <section class="stat-card"><div class="stat-top"><span>Minutos operacionais</span><span class="stat-icon"><i class="bi bi-clock-history"></i></span></div><div class="stat-value">{{ indicadores.get('minutos_totais_operacionais', 0) }}</div><div class="stat-note">Minutos calculados pela API</div></section>
+    <section class="stat-card"><div class="stat-top"><span>Comparativos diários</span><span class="stat-icon"><i class="bi bi-calendar-day"></i></span></div><div class="stat-value">{{ indicadores.get('comparativo_diario', [])|length }}</div><div class="stat-note">Registros por equipe e data</div></section>
+    <section class="stat-card"><div class="stat-top"><span>Comparativos mensais</span><span class="stat-icon"><i class="bi bi-calendar3"></i></span></div><div class="stat-value">{{ indicadores.get('comparativo_mensal', [])|length }}</div><div class="stat-note">Registros agrupados por mês</div></section>
+</div>
+<div class="panel mb-4"><h2 class="panel-title">Produção diária por equipe</h2><p class="panel-description">Quantidade produzida registrada por data.</p><div class="table-wrap"><table class="table"><thead><tr><th>Data</th><th>Equipe</th><th>Total produzido</th></tr></thead><tbody>
+{% for item in indicadores.get('comparativo_diario', []) %}<tr><td>{{ item.get('data') or '—' }}</td><td>{{ item.get('equipe') or '—' }}</td><td><span class="badge-soft">{{ item.get('total_produzido', 0) }}</span></td></tr>{% else %}<tr><td colspan="3" class="empty-state"><i class="bi bi-bar-chart"></i>Nenhum indicador diário disponível.</td></tr>{% endfor %}
+</tbody></table></div></div>
+<div class="panel mb-4"><h2 class="panel-title">Resumo semanal</h2><p class="panel-description">Produção agrupada por semana e equipe.</p><div class="table-wrap"><table class="table"><thead><tr><th>Ano / semana</th><th>Equipe</th><th>Total produzido</th></tr></thead><tbody>
+{% for item in indicadores.get('comparativo_semanal', []) %}<tr><td>{{ item.get('ano_semana') or '—' }}</td><td>{{ item.get('equipe') or '—' }}</td><td>{{ item.get('total_produzido', 0) }}</td></tr>{% else %}<tr><td colspan="3" class="empty-state">Ainda não há dados semanais.</td></tr>{% endfor %}
+</tbody></table></div></div>
+<div class="panel"><h2 class="panel-title">Resumo mensal</h2><p class="panel-description">Produção agrupada por mês e equipe.</p><div class="table-wrap"><table class="table"><thead><tr><th>Mês</th><th>Equipe</th><th>Total produzido</th></tr></thead><tbody>
+{% for item in indicadores.get('comparativo_mensal', []) %}<tr><td>{{ item.get('mes') or '—' }}</td><td>{{ item.get('equipe') or '—' }}</td><td>{{ item.get('total_produzido', 0) }}</td></tr>{% else %}<tr><td colspan="3" class="empty-state">Ainda não há dados mensais.</td></tr>{% endfor %}
+</tbody></table></div></div>
+{% endblock %}

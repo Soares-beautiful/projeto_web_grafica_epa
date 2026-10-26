@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}Nova equipe · Gráfica EPA{% endblock %}
+{% block content %}
+<div class="page-heading"><div><h1>Nova equipe</h1><p>Informe o responsável e o nome da equipe.</p></div><a href="{{ url_for('equipes') }}" class="btn btn-outline-light"><i class="bi bi-arrow-left me-2"></i>Voltar</a></div>
+<div class="panel form-panel"><h2 class="panel-title">Dados da equipe</h2><p class="panel-description">O CPF precisa pertencer a um funcionário cadastrado.</p><form method="post" action="{{ url_for('nova_equipe') }}"><div class="mb-3"><label class="form-label" for="nome_equipe">Nome da equipe</label><input class="form-control" id="nome_equipe" name="nome_equipe" maxlength="100" placeholder="Ex.: Equipe de impressão" required></div><div class="mb-4"><label class="form-label" for="cpf">CPF do responsável</label><input class="form-control" id="cpf" name="cpf" inputmode="numeric" maxlength="14" placeholder="Digite o CPF do funcionário" required><div class="form-text text-secondary">Pode digitar o CPF com ou sem pontuação.</div></div><button class="btn btn-primary" type="submit"><i class="bi bi-check-lg me-2"></i>Salvar equipe</button><a href="{{ url_for('equipes') }}" class="btn btn-outline-light ms-2">Cancelar</a></form></div>
+{% endblock %}

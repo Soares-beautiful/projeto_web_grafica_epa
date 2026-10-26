@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Cadastro · Gráfica EPA{% endblock %}
+{% block content %}
+<section class="auth-card mx-auto">
+    <div class="auth-brand">
+        <div class="brand-icon"><i class="bi bi-printer-fill"></i></div>
+        <h1>Gráfica EPA</h1>
+        <p>Cadastro de funcionário</p>
+    </div>
+    <h2 class="h5 fw-bold mb-1">Criar conta</h2>
+    <p class="text-secondary small mb-4">Preencha os dados para solicitar acesso ao sistema.</p>
+    <form action="{{ url_for('cadastro') }}" method="post">
+        <div class="mb-3"><label for="nome" class="form-label">Nome completo</label><input class="form-control" id="nome" name="nome" maxlength="100" autocomplete="name" required></div>
+        <div class="mb-3"><label for="cpf" class="form-label">CPF (somente números)</label><input class="form-control" id="cpf" name="cpf" inputmode="numeric" maxlength="11" placeholder="11 dígitos" required></div>
+        <div class="mb-3"><label for="email" class="form-label">E-mail corporativo</label><input class="form-control" type="email" id="email" name="email" maxlength="100" autocomplete="email" required></div>
+        <div class="mb-3"><label for="senha" class="form-label">Senha</label><input class="form-control" type="password" id="senha" name="senha" autocomplete="new-password" required></div>
+        <div class="mb-4"><label for="confirmar_senha" class="form-label">Confirmar senha</label><input class="form-control" type="password" id="confirmar_senha" name="confirmar_senha" autocomplete="new-password" required></div>
+        <button class="btn btn-primary w-100 py-3" type="submit"><i class="bi bi-person-plus-fill me-2"></i>Criar minha conta</button>
+    </form>
+    <div class="auth-footer">Já possui cadastro? <a href="{{ url_for('login') }}">Voltar para o login</a></div>
+</section>
+{% endblock %}

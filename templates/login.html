@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Entrar · Gráfica EPA{% endblock %}
+{% block content %}
+<section class="auth-card mx-auto">
+    <div class="auth-brand">
+        <div class="brand-icon"><i class="bi bi-printer-fill"></i></div>
+        <h1>Gráfica EPA</h1>
+        <p>Gestão industrial &amp; painel de controle</p>
+    </div>
+    <h2 class="h5 fw-bold mb-1">Entrar no sistema</h2>
+    <p class="text-secondary small mb-4">Use seu e-mail cadastrado e sua senha.</p>
+    <form action="{{ url_for('login') }}" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail corporativo</label>
+            <input class="form-control" type="email" id="email" name="email" placeholder="operador@graficaepa.com.br" autocomplete="username" required>
+        </div>
+        <div class="mb-4">
+            <label for="senha" class="form-label">Senha</label>
+            <input class="form-control" type="password" id="senha" name="senha" placeholder="Digite sua senha" autocomplete="current-password" required>
+        </div>
+        <button class="btn btn-primary w-100 py-3" type="submit"><i class="bi bi-box-arrow-in-right me-2"></i>Entrar no sistema</button>
+    </form>
+    <div class="auth-footer">Ainda não tem acesso? <a href="{{ url_for('cadastro') }}">Criar cadastro</a></div>
+</section>
+{% endblock %}
