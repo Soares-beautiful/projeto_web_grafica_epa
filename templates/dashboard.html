@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Dashboard · Gráfica EPA{% endblock %}
 {% block content %}
-<div class="page-heading"><div><h1>Dashboard</h1><p>Resumo dos indicadores de produção da Gráfica EPA.</p></div><span class="badge-soft"><i class="bi bi-activity me-1"></i>Dados da API</span></div>
+<div class="page-heading"><div><h1>Dashboard</h1><p>Resumo dos indicadores de produção da Gráfica EPA.</p></div><span class="badge-soft"><i class="bi bi-activity me-1"></i></span></div>
 <div class="stat-grid">
     <section class="stat-card"><div class="stat-top"><span>Tempo total de rodagem</span><span class="stat-icon"><i class="bi bi-stopwatch"></i></span></div><div class="stat-value">{{ indicadores.get('tempo_total_rodagem', '—') }}</div><div class="stat-note">Somatório dos registros de produção</div></section>
     <section class="stat-card"><div class="stat-top"><span>Minutos operacionais</span><span class="stat-icon"><i class="bi bi-clock-history"></i></span></div><div class="stat-value">{{ indicadores.get('minutos_totais_operacionais', 0) }}</div><div class="stat-note">Minutos calculados pela API</div></section>
