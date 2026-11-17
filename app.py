@@ -124,9 +124,7 @@ def listar_funcionarios_api():
     return []
 
 
-# =========================================================
 # INICIO E AUTENTICACAO
-# =========================================================
 
 @app.route("/")
 def inicio():
@@ -226,9 +224,7 @@ def sair():
     return redirect(url_for("login"))
 
 
-# =========================================================
 # PAINEL / DASHBOARD
-# =========================================================
 
 @app.route("/dashboard")
 @login_required
@@ -247,9 +243,7 @@ def dashboard():
     return render_template("dashboard.html", indicadores={})
 
 
-# =========================================================
 # FUNCIONARIOS
-# =========================================================
 
 @app.route("/funcionarios")
 @login_required
@@ -268,9 +262,7 @@ def funcionarios():
     return render_template("funcionarios.html", funcionarios=[])
 
 
-# =========================================================
 # EQUIPES E MEMBROS
-# =========================================================
 
 @app.route("/equipes")
 @app.route("/equipe")
@@ -379,9 +371,9 @@ def remover_membro(id_equipe, id_funcionario):
     return redirect(url_for("detalhe_equipe", id_equipe=id_equipe))
 
 
-# =========================================================
+
 # PRODUTOS
-# =========================================================
+
 
 @app.route("/produtos")
 @login_required
@@ -464,9 +456,8 @@ def enviar_arquivo_produto(id_produto):
     return redirect(url_for("produtos"))
 
 
-# =========================================================
+
 # MATERIAIS
-# =========================================================
 
 @app.route("/materiais")
 @login_required
@@ -526,9 +517,9 @@ def novo_material():
     return render_template("material_form.html", produtos=produtos_disponiveis)
 
 
-# =========================================================
+
 # PRODUCAO
-# =========================================================
+
 
 @app.route("/producao")
 @login_required
@@ -600,9 +591,8 @@ def nova_producao():
     return render_template("producao_form.html", equipes=equipes_disponiveis, funcionarios=funcionarios_disponiveis)
 
 
-# =========================================================
 # TURNOS
-# =========================================================
+
 
 @app.route("/turnos")
 @login_required
